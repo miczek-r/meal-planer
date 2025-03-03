@@ -1,0 +1,5 @@
+jinja2
+pdfkit
+wkhtmltopdf
+pyinstaller
+PyQt5
