@@ -7,14 +7,9 @@ To narzędzie generuje harmonogram posiłków dla wybranego miesiąca i grup os�
 Program działa jako samodzielny plik wykonywalny, ale jeśli chcesz uruchomić go ze źródła, wymagane są:
 - Python 3
 - `pip install -r requirements.txt`
-- `wkhtmltopdf` (zainstalowany i dostępny w PATH)
-
-## Instalacja `wkhtmltopdf`
-- **Windows**: Pobierz i zainstaluj z [wkhtmltopdf.org](https://wkhtmltopdf.org/downloads.html), dodaj do PATH.
-- **Linux (Ubuntu/Debian)**: `sudo apt install wkhtmltopdf`
-- **macOS (Homebrew)**: `brew install wkhtmltopdf`
 
 ## Uruchamianie programu
+Do uruchomienia potrzebny jest plik `groups.json` w folderze z plikiem `schedule.exe`.
 Jeśli masz plik wykonywalny (`schedule.exe`):
 ```sh
 schedule.exe
@@ -22,21 +17,15 @@ schedule.exe
 
 Jeśli uruchamiasz skrypt Python:
 ```sh
-python schedule.py
+python src/schedule.py
 ```
 
 ## Tworzenie pliku wykonywalnego (Windows/Linux/macOS)
 Aby utworzyć plik `.exe` lub samodzielny plik binarny:
 ```sh
-pyinstaller --onefile --add-data "template.html;." --add-data "groups.json;." --hidden-import jinja2 schedule.py
+pyinstaller schedule.spec
 ```
 Po zakończeniu plik znajdziesz w katalogu `dist/`.
-
-## Pliki projektu
-- `schedule.py` – główny skrypt
-- `groups.json` – lista grup i osób
-- `template.html` – szablon tabeli HTML
-- `requirements.txt` – wymagane pakiety
 
 ## Konfiguracja `groups.json`
 Plik JSON powinien mieć następujący format:
